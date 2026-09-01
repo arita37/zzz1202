@@ -1,0 +1,21 @@
+name: Sync vmodal dependencies
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Android SDK
+        run: git clone https://github.com/v-modal/vmodal_sdk_android.git
+
+      - name: Clone Flutter SDK
+        run: git clone https://github.com/v-modal/vmodal_sdk_flutter.git
+
+      - name: Install vmodal
+        run: python -m pip install vmodal
